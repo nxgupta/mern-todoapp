@@ -1,0 +1,41 @@
+mongoose----
+        schema----
+                without Validation----
+                        let newSchema=new mongoose.Schema({
+                            name:String,
+                            completed:Boolean
+                        })
+
+                with Validation----
+                        let newSchema=new mongoose.Schema({
+                            name:{
+                                type:String,
+                                required:[true,"must provide a name"],
+                                trim:true,
+                                maxlength:[20,"Name cannot be greater than 20 chars"]
+                            }
+                            completed:{
+                                type:boolean;
+                                default:false;
+                            }
+                        })
+        model----
+                we need a module, which is a wrapper built around schema, which provides an interface to interact with Database and allow us to perform CRUD operations
+
+             model.create----
+                    when we create data, using model, it will only accept those values which are in schema, and ignore other values
+
+        controllers----
+
+-               All the function in controllers must have try-catch/library to catch errors
+
+-               PATCH- model.findOneAndUpdate(id,data,options={new:true, runValidators:true})
+                PUT- model.findOneAndUpdate(id,data,options={new:true, runValidators:true, overwrites:true})
+                
+
+
+        
+
+
+
+
